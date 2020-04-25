@@ -37,7 +37,7 @@ public class ServiceGroupe {
     
 
     public boolean ajouter(Groupe g) {
-        String url = Statics.BASE_URL + "/groupes/" + g.getTitre() + "/" + g.getDescription() +"/"+g.getAutorisation(); //création de l'URL
+        String url = Statics.BASE_URL + "/groupes/jsonadd/" + g.getTitre() + "/" + g.getDescription() +"/"+g.getAutorisation(); //création de l'URL
         request.setUrl(url);// Insertion de l'URL de notre demande de connexion
         request.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -93,7 +93,7 @@ public class ServiceGroupe {
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données
                 Groupe g = new Groupe();
-                float id = Float.parseFloat(obj.get("id").toString());
+                float id = Float.parseFloat(obj.get("idGroupe").toString());
                 g.setId((int)id);
                 g.setTitre(obj.get("titre").toString());
                 g.setDescription(obj.get("description").toString());
@@ -115,18 +115,29 @@ public class ServiceGroupe {
     }
     
     public ArrayList<Groupe> Afficher(){
-        String url = Statics.BASE_URL+"/groupes/";
+        String url = Statics.BASE_URL+"/groupes/jsonAll";
         request.setUrl(url);
         request.setPost(false);
         request.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
+                System.out.println(new String(request.getResponseData()));
                 groupes = parseGroupes(new String(request.getResponseData()));// recuperer les donnees
                 request.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(request);
         return groupes;
+    }
+    
+    public Groupe chercher(int id)
+    {
+        Groupe gr = null;
+        ArrayList<Groupe> grps = this.Afficher();
+        for(Groupe g: grps)
+            if(g.getId()==id)
+               gr = g;
+        return gr;
     }
     
 }

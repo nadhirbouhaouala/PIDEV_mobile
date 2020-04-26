@@ -29,6 +29,7 @@ public class ServiceGroupe {
     
     private ConnectionRequest request;
     private boolean responseResult;
+    private int lastid;
     
     //constructeur 1
     public ServiceGroupe() {
@@ -121,13 +122,28 @@ public class ServiceGroupe {
         request.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                System.out.println(new String(request.getResponseData()));
                 groupes = parseGroupes(new String(request.getResponseData()));// recuperer les donnees
                 request.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(request);
         return groupes;
+    }
+    
+    public int lastid()
+    {
+        String url = Statics.BASE_URL+"/groupes/jsonlastid";
+        request.setUrl(url);
+        request.setPost(false);
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                lastid = ((int)Float.parseFloat(new String(request.getResponseData())));
+                request.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return lastid ;                 
     }
     
     public Groupe chercher(int id)
@@ -138,6 +154,37 @@ public class ServiceGroupe {
             if(g.getId()==id)
                gr = g;
         return gr;
+    }
+    
+    public boolean modifier(Groupe g) {
+        String url = Statics.BASE_URL + "/groupes/jsonedit/" 
+                + g.getId()+ "/" + g.getTitre() + "/" + g.getDescription() +"/"+g.getAutorisation(); //création de l'URL
+        request.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                responseResult = request.getResponseCode() == 200; //Code HTTP 200 OK
+                request.removeResponseListener(this);
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return responseResult;
+    }
+    
+    public boolean supprimer(Groupe g) {
+        String url = Statics.BASE_URL + "/groupes/jsondelete/" + g.getId();
+        request.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                responseResult = request.getResponseCode() == 200; //Code HTTP 200 OK
+                request.removeResponseListener(this);
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return responseResult;
     }
     
 }

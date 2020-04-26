@@ -42,7 +42,6 @@ public class ServiceMembre {
             JSONParser j = new JSONParser();
             Map<String,Object> membresListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             List<Map<String,Object>> list = (List<Map<String,Object>>)membresListJson.get("root");
-            System.out.println("ccc");
             //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données

@@ -2,8 +2,12 @@ package com.mycompany.myapp;
 
 
 import GUI.MembreGroupesInterface;
+
 import GUI.MembreInterface;
 import GUI.MembreLoginInterface;
+
+import GUI.OffreInterface;
+
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -57,7 +61,9 @@ public class MyApplication {
         Form hi = new Form("Hi World", BoxLayout.y());
         hi.add(new Label("Hi World"));
         hi.show();*/
+
         new MembreLoginInterface().show();
+
     }
 
     public void stop() {

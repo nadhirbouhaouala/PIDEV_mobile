@@ -19,6 +19,7 @@ public class Reclamation {
     private int idRecl, id_emeteur, id_cible;
     //private boolean etat;
     private int etat;
+    private String cible;
 
     java.util.Date dt = new java.util.Date();
     java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -38,6 +39,15 @@ public class Reclamation {
        
     }
 
+    public String getCible() {
+        return cible;
+    }
+
+    public void setCible(String cible) {
+        this.cible = cible;
+    }
+
+    
     public String getDescription() {
         return description;
     }
@@ -110,6 +120,16 @@ public class Reclamation {
         this.selecteur = selecteur;
     }
 
+    public Reclamation(int idRecl, int id_emeteur, int id_cible, String description,int etat,String selecteur,String date) {
+        this.description = description;
+        this.selecteur = selecteur;
+        this.idRecl = idRecl;
+        this.id_emeteur = id_emeteur;
+        this.id_cible = id_cible;
+        this.etat = etat;
+    }
+
+    
     
 
     @Override

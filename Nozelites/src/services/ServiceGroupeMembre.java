@@ -97,8 +97,8 @@ public class ServiceGroupeMembre {
                 GroupeMembre gm = new GroupeMembre();
                 float id = Float.parseFloat(obj.get("idGm").toString());
                 gm.setId((int)id);
-                System.out.println(obj.get("idGroupe").toString().substring(obj.get("idGroupe").toString().indexOf("=")+1, obj.get("idGroupe").toString().indexOf(",")-2));
-                gm.setId_membre((int)Float.parseFloat(obj.get("idGroupe").toString().substring(obj.get("idGroupe").toString().indexOf("=")+1, obj.get("idGroupe").toString().indexOf(",")-2)));
+                //System.out.println(obj.get("idGroupe").toString().substring(obj.get("idGroupe").toString().indexOf("=")+1, obj.get("idGroupe").toString().indexOf(",")-2));
+                gm.setId_groupe((int)Float.parseFloat(obj.get("idGroupe").toString().substring(obj.get("idGroupe").toString().indexOf("=")+1, obj.get("idGroupe").toString().indexOf(",")-2)));
                 gm.setId_membre((int)Float.parseFloat(obj.get("idMembre").toString().substring(obj.get("idMembre").toString().indexOf("=")+1, obj.get("idMembre").toString().indexOf(",")-2)));
                 gm.setId_invite((int)Float.parseFloat(obj.get("idInvite").toString()));
                 gm.setEtat(obj.get("etat").toString());
@@ -132,5 +132,44 @@ public class ServiceGroupeMembre {
         NetworkManager.getInstance().addToQueueAndWait(request);
         return groupesmembres;
     }
+    
+    public boolean modifier(GroupeMembre gm)
+    {
+        String url = Statics.BASE_URL + "/groupesmembres/jsonedit/" 
+                + gm.getId()+ "/" + gm.getId_groupe() + "/" + gm.getId_membre() +"/"+gm.getId_invite()+"/"+gm.getEtat(); 
+        request.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                responseResult = request.getResponseCode() == 200; //Code HTTP 200 OK
+                request.removeResponseListener(this); //Supprimer cet actionListener
+                /* une fois que nous avons terminé de l'utiliser.
+                La ConnectionRequest req est unique pour tous les appels de 
+                n'importe quelle méthode du Service task, donc si on ne supprime
+                pas l'ActionListener il sera enregistré et donc éxécuté même si 
+                la réponse reçue correspond à une autre URL(get par exemple)*/
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return responseResult;
+    }
+    
+    public boolean supprimer(GroupeMembre gm)
+    {
+        String url = Statics.BASE_URL + "/groupesmembres/jsondelete/" + gm.getId(); 
+        request.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                responseResult = request.getResponseCode() == 200; //Code HTTP 200 OK
+                request.removeResponseListener(this); //Supprimer cet actionListener
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return responseResult;
+    }
+    
+    
     
 }

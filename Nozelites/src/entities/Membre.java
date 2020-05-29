@@ -158,6 +158,14 @@ public class Membre extends Utilisateur{
         this.usrId = usrId;
     }
     
+    public int getTye() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+    
    
      
      

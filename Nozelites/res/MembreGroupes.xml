@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="10" useXmlUI="false">
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <image name="back-command.png" type="multi"  />
     <image name="back-command.png1" type="multi"  />
     <image name="back-command.png2" type="multi"  />
@@ -169,6 +169,8 @@
     <image name="Dialog.borderTopR_1.png1" type="multi"  />
     <image name="Dialog.borderTopR_1.png2" type="multi"  />
     <image name="Dialog.borderTopR_1.png3" type="multi"  />
+    <image name="digital-marketing.png"  />
+    <image name="graphic.png"  />
     <image name="groupes.png"  />
     <ui name="GUI 1" />
     <ui name="GUI 2" />
@@ -217,6 +219,7 @@
     <image name="of_menu.png1" type="multi"  />
     <image name="of_menu.png2" type="multi"  />
     <image name="of_menu.png3" type="multi"  />
+    <image name="rocket.png"  />
     <image name="sliderEmpty.png" type="multi"  />
     <image name="sliderEmpty.png1" type="multi"  />
     <image name="sliderEmpty.png2" type="multi"  />

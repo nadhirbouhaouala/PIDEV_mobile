@@ -4,10 +4,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/GUI/MembreGroupesInterface.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeModifierInterface.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeInterface.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeAjouterInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/MessageInboxInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/MessageModifierInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/OffreInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/MessageInterface.java</file>
         </group>
     </open-files>
 </project-private>

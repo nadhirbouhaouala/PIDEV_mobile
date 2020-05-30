@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
+<<<<<<< HEAD
     <image name="ba.jpg"  />
+=======
+>>>>>>> e34a5c4fbb4369222e49b6715a82d8fe44f9731b
     <image name="back-command.png" type="multi"  />
     <image name="back-command.png1" type="multi"  />
     <image name="back-command.png2" type="multi"  />
@@ -490,6 +493,7 @@
     <image name="Dialog.borderTopR_1.png1" type="multi"  />
     <image name="Dialog.borderTopR_1.png2" type="multi"  />
     <image name="Dialog.borderTopR_1.png3" type="multi"  />
+<<<<<<< HEAD
     <image name="Dialog.borderTopR_1.png4" type="multi"  />
     <image name="Dialog.borderTopR_1.png5" type="multi"  />
     <image name="Form.borderBottom_1.png" type="multi"  />
@@ -519,10 +523,15 @@
     <image name="Form.borderTopR_1.png" type="multi"  />
     <image name="Form.borderTopR_2.png" type="multi"  />
     <image name="Form.borderTopR_3.png" type="multi"  />
+=======
+    <image name="digital-marketing.png"  />
+    <image name="graphic.png"  />
+>>>>>>> e34a5c4fbb4369222e49b6715a82d8fe44f9731b
     <image name="groupes.png"  />
     <ui name="GUI 1" />
     <ui name="GUI 2" />
     <ui name="GUI 3" />
+<<<<<<< HEAD
     <image name="Image 1"  />
     <image name="Image 2"  />
     <image name="Image 3"  />
@@ -562,6 +571,9 @@
             <entry key="cancel" value="Cancel" />
         </lang>
     </l10n>
+=======
+    <image name="logoo.jpg" type="multi"  />
+>>>>>>> e34a5c4fbb4369222e49b6715a82d8fe44f9731b
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottom_1.png1" type="multi"  />
     <image name="Menu.borderBottom_1.png2" type="multi"  />
@@ -680,6 +692,7 @@
     <image name="of_menu.png1" type="multi"  />
     <image name="of_menu.png2" type="multi"  />
     <image name="of_menu.png3" type="multi"  />
+<<<<<<< HEAD
     <image name="placeholder2 .png"  />
     <image name="Radio_btn_Normal.png" type="multi"  />
     <image name="Radio_btn_Normal.png1" type="multi"  />
@@ -724,6 +737,9 @@
     <image name="Slider.borderTopR_2.png_veryHigh.png1" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh_FULL.png" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh_FULL.png1" type="multi"  />
+=======
+    <image name="rocket.png"  />
+>>>>>>> e34a5c4fbb4369222e49b6715a82d8fe44f9731b
     <image name="sliderEmpty.png" type="multi"  />
     <image name="sliderEmpty.png1" type="multi"  />
     <image name="sliderEmpty.png2" type="multi"  />
@@ -1302,15 +1318,23 @@
         <val key="RadioButton.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="RadioButton.sel#transparency" value="0" />
         <val key="RadioButton.transparency" value="0" />
+        <val key="SideCommand.align" value="1" />
+        <val key="SideCommand.bgColor" value="ff3333" />
         <gradient key="SideCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SideCommand.bgType" value="0" />
         <border key="SideCommand.border" type="empty" />
         <val key="SideCommand.fgColor" value="ffffff" />
         <font key="SideCommand.font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="SideCommand.marUnit" value="2,2,2,2" />
+<<<<<<< HEAD
         <val key="SideCommand.margin" value="1.0,0.0,1.0,1.0" />
         <val key="SideCommand.padUnit" value="2,0,2,0" />
         <val key="SideCommand.padding" value="1.0,1.0,0.0,0.0" />
+=======
+        <val key="SideCommand.margin" value="0.0,1.0,0.0,0.0" />
+        <val key="SideCommand.padUnit" value="2,2,2,2" />
+        <val key="SideCommand.padding" value="3.0,3.0,3.0,0.0" />
+>>>>>>> e34a5c4fbb4369222e49b6715a82d8fe44f9731b
         <gradient key="SideCommand.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SideCommand.press#bgType" value="0" />
         <border key="SideCommand.press#border" type="empty" />
@@ -1334,10 +1358,17 @@
         <val key="SideCommand.sel#textDecoration" value="0" />
         <val key="SideCommand.sel#transparency" value="0" />
         <val key="SideCommand.textDecoration" value="0" />
+<<<<<<< HEAD
         <val key="SideCommand.transparency" value="0" />
         <val key="SideNavigationPanel.bgColor" value="cc0000" />
         <val key="SideNavigationPanel.margin" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.padding" value="0.0,0.0,0.0,0.0" />
+=======
+        <val key="SideCommand.transparency" value="255" />
+        <val key="SideNavigationPanel.bgColor" value="ffffff" />
+        <val key="SideNavigationPanel.margin" value="0.0,1.0,0.0,0.0" />
+        <val key="SideNavigationPanel.padding" value="3.0,3.0,3.0,3.0" />
+>>>>>>> e34a5c4fbb4369222e49b6715a82d8fe44f9731b
         <val key="SideNavigationPanel.transparency" value="255" />
         <gradient key="Slider.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Slider.bgType" value="0" />

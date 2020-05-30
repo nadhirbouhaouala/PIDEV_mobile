@@ -4,11 +4,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/GUI/MembreGroupesInterface.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeAjouterInterface.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/services/ServiceGroupe.java</file>
-            <file>file:/C:/wamp64/www/3.2/PIDEV/PIDEV_mobile/Nozelites/src/services/ServiceMembre.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationAjouterInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/services/ServicePublication.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/services/ServiceFavoris.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationChercherInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationModifierInterface.java</file>
         </group>
     </open-files>
 </project-private>

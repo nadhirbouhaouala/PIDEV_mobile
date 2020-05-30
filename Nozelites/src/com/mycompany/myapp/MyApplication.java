@@ -2,6 +2,7 @@ package com.mycompany.myapp;
 
 
 import GUI.MembreGroupesInterface;
+import GUI.EvenementAfficherInterface;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -28,7 +29,7 @@ public class MyApplication {
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
-        theme = UIManager.initFirstTheme("/theme");
+        theme = UIManager.initFirstTheme("/MembreGroupes");
 
         // Enable Toolbar on all Forms by default
         Toolbar.setGlobalToolbar(true);
@@ -55,7 +56,7 @@ public class MyApplication {
         Form hi = new Form("Hi World", BoxLayout.y());
         hi.add(new Label("Hi World"));
         hi.show();*/
-        new MembreGroupesInterface().show();
+        new EvenementAfficherInterface().show();
     }
 
     public void stop() {

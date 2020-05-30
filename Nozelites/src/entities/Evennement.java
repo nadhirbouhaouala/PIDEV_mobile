@@ -26,7 +26,7 @@ public class Evennement {
     private int etat;
 
     
-
+   
     public int getEtat() {
         return etat;
     }
@@ -108,6 +108,34 @@ public class Evennement {
         this.NbPlace = NbPlace;
         this.image = image;
         
+    }
+
+    public Evennement(int idc, String nom, String lieu, String date, String heure, String desciption, String siteWeb, int NbPlace, String image) {
+        this.idc = idc;
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.heure = heure;
+        this.desciption = desciption;
+        this.siteWeb = siteWeb;
+        this.NbPlace = NbPlace;
+        this.image = image;
+        this.NbParticipant=0;
+        this.etat=0;
+    }
+ 
+       public Evennement(int idE, String lieu, String date, String heure, String desciption, String siteWeb, int NbPlace, String image, String nom) {
+        this.idE = idE;
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.heure = heure;
+        this.desciption = desciption;
+        this.siteWeb = siteWeb;
+        this.NbPlace = NbPlace;
+        this.image = image;
+        this.NbParticipant=0;
+        this.etat=0;
     }
 
     public String getImage() {

@@ -7,16 +7,19 @@ package GUI;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.components.OnOffSwitch;
+import com.codename1.ui.AutoCompleteTextField;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
@@ -25,6 +28,7 @@ import entities.GroupeMembre;
 import entities.Membre;
 import entities.Reclamation;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import services.ServiceGroupe;
 import services.ServiceGroupeMembre;
 import services.ServiceMembre;
@@ -46,8 +50,11 @@ public class MembreReclamationAfficherInterface extends com.codename1.ui.Form{
         setTitle("Mes Reclamation");
         setLayout(BoxLayout.y());
         theme = UIManager.initFirstTheme("/MembreGroupes");
-        
+        final DefaultListModel<String> list = new DefaultListModel<>();
         //Tabs : toolbar
+         AutoCompleteTextField Textbarre = new AutoCompleteTextField(list);
+         Textbarre.setMinimumElementsShownInPopup(5);
+          Button chercher = new Button("chercher");
          Tabs tab = new Tabs();
          UIBuilder ui = new UIBuilder();
          Container cnt1 = ui.createContainer(theme, "GUI 1");//ajouter graphiquement un GUI element
@@ -66,34 +73,31 @@ public class MembreReclamationAfficherInterface extends com.codename1.ui.Form{
         
        
         
-       /* Button save = new Button("Enregistrer");
-        save.addActionListener(new ActionListener() {
+     
+        Image icon = theme.getImage("logoo.jpg");
+         Container topBar = BorderLayout.center(new Label(icon));
+        this.getToolbar().addMaterialCommandToSideMenu("Mon Profil", FontImage.MATERIAL_HOME, e->{
+            new MembreAfficherInterface().show();
+            
+       });
+
+        this.getToolbar().addMaterialCommandToSideMenu("Mes Réclamations", FontImage.MATERIAL_19MP, e->{
+            new MembreReclamationAfficherInterface().show();  });
+
+         this.getToolbar().addMaterialCommandToSideMenu("Evenement", FontImage.MATERIAL_EVENT, e->{
+            new EvenementAfficherInterface().show();     
+       });
+         
+          chercher.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                //ajouter groupe
-                ServiceReclamation sg = new ServiceReclamation();
-                int etatt = 0;
-               // if(etat.isValue())etatt=1;
-                sg.ajouter(new Reclamation(id_user_actif,8, description.getText(),selecteur.getSelectedItem().toString()));
-                //ajouter membre
-             
-            
-                new MembreGroupesInterface().show();
-                
+                new ReclamationChercherInterface(Textbarre.getText()).show();
             }
         });
-        cnt1.setLayout(BoxLayout.y());
-        cnt1.add(selecteur).add(description).add(etatContainer).add(save);
-        
-        //inviter membre 
- 
-        
-        //retour btn
-        this.getToolbar().addCommandToLeftBar("Retour", null, (evt) -> {
-            new MembreGroupesInterface().show();
-        });*/
+        this.getToolbar().addComponentToSideMenu(topBar);
         ArrayList<Reclamation> list_e = new ServiceReclamation().Afficher();
-        
+        cnt1.add(Textbarre).add(chercher);
+    
         cnt1.setLayout(BoxLayout.y());
         for(Reclamation gmi :  list_e )
             if(gmi.getId_emeteur()==id_user_actif){

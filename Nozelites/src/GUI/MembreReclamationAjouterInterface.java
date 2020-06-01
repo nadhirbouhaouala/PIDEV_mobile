@@ -90,7 +90,7 @@ public class MembreReclamationAjouterInterface extends com.codename1.ui.Form{
           
                 sg.ajouter(new Reclamation(id_user_actif, id, description.getText(),selecteur.getSelectedItem().toString()));
                 //ajouter membre
-                 showToast("Votre Publication est ajoutée avec succées ");
+                 showToast("Votre Réclamation est ajoutée avec succées ");
 
             
               // new MembreReclamationAfficherInterface().show();

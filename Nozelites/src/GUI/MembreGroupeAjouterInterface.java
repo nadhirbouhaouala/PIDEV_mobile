@@ -139,7 +139,8 @@ public class MembreGroupeAjouterInterface extends com.codename1.ui.Form {
                 
     }
 
-//////-- DON'T EDIT BELOW THIS LINE!!!
+
+////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

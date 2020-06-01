@@ -26,6 +26,7 @@ import entities.Reclamation;
 import java.util.ArrayList;
 import services.ServiceMembre;
 import services.ServiceReclamation;
+import utils.Session;
 
 /**
  *
@@ -34,7 +35,7 @@ import services.ServiceReclamation;
 public class MembreReclamationAjouterInterface1 extends com.codename1.ui.Form{
     ComboBox selecteur = new ComboBox();
      private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = Session.getId_Session();;
     private ArrayList<Membre> list_m = new ServiceMembre().Afficher();
 
     public MembreReclamationAjouterInterface1(int id) {
@@ -76,7 +77,7 @@ public class MembreReclamationAjouterInterface1 extends com.codename1.ui.Form{
                 ServiceReclamation sg = new ServiceReclamation();
           
                // if(etat.isValue())etatt=1;
-              //  sg.ajouter(new Reclamation(id_user_actif, id, description.getText(),selecteur.getSelectedItem().toString()));
+                sg.ajouter(new Reclamation(id_user_actif, id, description.getText(),selecteur.getSelectedItem().toString()));
                 //ajouter membre
              
             

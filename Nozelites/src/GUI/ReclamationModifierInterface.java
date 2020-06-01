@@ -62,9 +62,9 @@ public class ReclamationModifierInterface extends com.codename1.ui.Form {
         
         
         
-        this.getToolbar().addCommandToLeftBar("retour", theme.getImage("back-command.png"), ev->{
-               new MembreReclamationAfficherInterface();
-            });
+          this.getToolbar().addCommandToLeftBar("Retour", null, (evt) -> {
+            new MembreReclamationAfficherInterface().show();
+        });
     }
     
     public ReclamationModifierInterface(com.codename1.ui.util.Resources resourceObjectInstance) {

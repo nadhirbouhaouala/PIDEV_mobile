@@ -4,8 +4,11 @@ package com.mycompany.myapp;
 import GUI.MembreGroupeInterface;
 import GUI.MembreGroupesInterface;
 
+
 import GUI.MembreReclamationAfficherInterface;
 import GUI.MembreReclamationAjouterInterface;
+
+import GUI.EvenementAfficherInterface;
 
 import GUI.MembreInterface;
 import GUI.MembreLoginInterface;
@@ -41,7 +44,7 @@ public class MyApplication {
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
-        theme = UIManager.initFirstTheme("/theme");
+        theme = UIManager.initFirstTheme("/MembreGroupes");
 
         // Enable Toolbar on all Forms by default
         Toolbar.setGlobalToolbar(true);

@@ -63,8 +63,15 @@ public class MembreInterface extends com.codename1.ui.Form {
             
        });
 
+
         this.getToolbar().addMaterialCommandToSideMenu("Mes Réclamations", FontImage.MATERIAL_19MP, e->{
             new MembreReclamationAfficherInterface().show();  });
+
+
+           this.getToolbar().addMaterialCommandToSideMenu("Mon Forum", FontImage.MATERIAL_HOME, e->{
+            new PublicationInterface().show();
+            
+       });
 
          this.getToolbar().addMaterialCommandToSideMenu("Evenement", FontImage.MATERIAL_EVENT, e->{
             new EvenementAfficherInterface().show();
@@ -132,7 +139,7 @@ public class MembreInterface extends com.codename1.ui.Form {
     
     
 
-//////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

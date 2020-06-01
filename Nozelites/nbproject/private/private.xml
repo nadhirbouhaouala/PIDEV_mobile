@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreReclamationAjouterInterface.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreReclamationAfficherInterface.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupesInterface.java</file>
@@ -30,6 +31,33 @@
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreLoginInterface.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Reclamation.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeAjouterInterface.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreGroupesInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/OffreInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/utils/Statics.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreAjouterInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeAjouterInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationChercherInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationModifierInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationAjouterInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/services/ServicePublication.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreLoginInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreAfficherInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreInterface.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/services/ServiceFavoris.java</file>
+            <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeModifierInterface.java</file>
+=======
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/EvenementAfficherInterface.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreLoginInterface.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/EvenementAjouterInterface.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreInterface.java</file>
+>>>>>>> 6471fc94bbf56a77ff8a05707e1253611358311c
+>>>>>>> d92da781cbb69833441febff9fa2985577639ec2
         </group>
     </open-files>
 </project-private>

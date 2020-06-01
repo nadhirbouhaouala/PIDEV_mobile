@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
@@ -13,7 +15,9 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import entities.Membre;
+import java.io.IOException;
 import java.util.ArrayList;
+
 import services.ServiceMembre;
 import utils.Session;
 
@@ -34,11 +38,11 @@ public class MembreLoginInterface extends com.codename1.ui.Form {
         Label lblLogin = new Label("Nom d'utilisateur");
         TextField login = new TextField();
         TextField mdp = new TextField("", "", 20, TextField.PASSWORD);
-        
+    
         Button btnCnx = new Button("Se Connecter");
         Button btnSign = new Button ("Creer un compte");
         
-        add(lblLogin).add(login).add(lblMdp).add(mdp).add(btnCnx).add(btnSign);
+       add(lblLogin).add(login).add(lblMdp).add(mdp).add(btnCnx).add(btnSign);
         
         btnCnx.addActionListener(new ActionListener() {
             @Override
@@ -69,7 +73,7 @@ public class MembreLoginInterface extends com.codename1.ui.Form {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-//////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

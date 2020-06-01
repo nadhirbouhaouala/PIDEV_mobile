@@ -27,15 +27,16 @@ import services.ServiceReclamation;
  * @author KHAIRI
  */
 public class ReclamationChercherInterface extends com.codename1.ui.Form{
-   private Resources theme;
-    private int id_user_actif = 9;
-    Reclamation pu=null;
+        private Resources theme;
+        private int id_user_actif = 9;
+        Reclamation pu=null;
+    
      public ReclamationChercherInterface(String s) {
-    Tabs tab = new Tabs();
-           setLayout(BoxLayout.y());
-                  UIBuilder ui = new UIBuilder();
+            Tabs tab = new Tabs();
+            setLayout(BoxLayout.y());
+            UIBuilder ui = new UIBuilder();
              Container cnt2 = new Container(BoxLayout.y());//ajouter graphiquement un GUI element
-        tab.addTab("Reclamation", cnt2);
+             tab.addTab("Reclamation", cnt2);
         
         add(tab);
         ArrayList<Reclamation> list_e = new ServiceReclamation().Afficher();
@@ -45,27 +46,23 @@ public class ReclamationChercherInterface extends com.codename1.ui.Form{
                      if(p.getSelecteur().equals(s))
                      {
                          pu =p;
-                      //   cnt1.setLayout(BoxLayout.y());
-                       
-                 //     cnt1.add(addItemGroupe(pu));
-                         
+              
                      }
                     
                  }
                 
-                    cnt2.add(addItemGroupe(pu));
+         cnt2.add(addItemGroupe(pu));
                   
          this.getToolbar().addCommandToRightBar("Retour", null, (evt) -> {
             new MembreReclamationAfficherInterface().show();
         });
-        
-        
+     
     }
-      public Container addItemGroupe(Reclamation g){//pour remplir la liste
-         Groupe f =new Groupe();
+ public Container addItemGroupe(Reclamation g){//pour remplir la liste
+        Groupe f =new Groupe();
         Container cn1=new Container(new BorderLayout());
         Container cn2=new Container(BoxLayout.y());
-         Container cn3=new Container(BoxLayout.x());
+        Container cn3=new Container(BoxLayout.x());
         Label lab=new Label(g.getDescription());
         Label lab2=new Label(g.getDate());
         Label lab3=new Label(g.getSelecteur());
@@ -109,23 +106,15 @@ public class ReclamationChercherInterface extends com.codename1.ui.Form{
            // cn2.add(lab).add(lab2).add(lab3).add(supprimerBtn).add(modifierBtn).add(noteBtn);
           }
       
-     
-        
-         ImageViewer imgv=new ImageViewer(theme.getImage("groupes.png"));
-       cn3.add(supprimerBtn).add(modifierBtn).add(noteBtn);
-         cn2.add(lab).add(lab2).add(lab3).add(lab4);
-         
+        ImageViewer imgv=new ImageViewer(theme.getImage("groupes.png"));
+        cn3.add(supprimerBtn).add(modifierBtn).add(noteBtn);
+        cn2.add(lab).add(lab2).add(lab3).add(lab4); 
         cn1.add(BorderLayout.WEST,imgv );
         cn1.add(BorderLayout.CENTER,cn2);
         cn1.add(BorderLayout.SOUTH,cn3);
 
        // cn1.add(BorderLayout.NORTH,modifierBtn);
-        
-  
-        return cn1;
-        
-          
-                
+        return cn1;          
      }
     
 }

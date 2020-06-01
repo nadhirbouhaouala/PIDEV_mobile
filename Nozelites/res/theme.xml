@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
@@ -754,3 +756,4 @@
     <image name="TitleArea.borderTopL_1.png" type="multi"  />
     <image name="TitleArea.borderTopR_1.png" type="multi"  />
 </resource>
+>>>>>>> 6471fc94bbf56a77ff8a05707e1253611358311c

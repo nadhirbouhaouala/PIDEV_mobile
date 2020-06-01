@@ -20,10 +20,12 @@ import com.codename1.ui.plaf.RoundRectBorder;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 /**
  *
- * @author syrine
+ * @author salon2
  */
+
 public class ScrollBar extends Container implements ScrollListener {
      private final Container target;
     private final DragHandle dragHandle;

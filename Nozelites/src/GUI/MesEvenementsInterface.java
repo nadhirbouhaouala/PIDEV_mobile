@@ -29,6 +29,7 @@ import com.codename1.l10n.ParseException;
 import com.codename1.ui.Image;
 import java.io.IOException;
 import rest.file.uploader.tn.FileUploader;
+import utils.Session;
 
 
 /**
@@ -37,7 +38,7 @@ import rest.file.uploader.tn.FileUploader;
  */
 public class MesEvenementsInterface extends com.codename1.ui.Form {
      private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = Session.id_Session;
     private String reg,imgPath,fileNameInServer;
      ImageViewer vu1, vu2;
     Button btncapture;

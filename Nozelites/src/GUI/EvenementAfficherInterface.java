@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import services.ServiceEvenement;
 import services.ServiceParticipant;
 import utils.ScrollBar;
+import utils.Session;
 
 
 
@@ -41,11 +42,11 @@ import utils.ScrollBar;
  */
 public class EvenementAfficherInterface extends com.codename1.ui.Form{
     private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = Session.id_Session;
     
     public EvenementAfficherInterface() {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
-        
+        System.out.println(Session.id_Session);
         setTitle("Mes Evenements");
       Button b=new Button();
         setLayout(BoxLayout.y());
@@ -83,11 +84,14 @@ public class EvenementAfficherInterface extends com.codename1.ui.Form{
         page1.getToolbar().addCommandToLeftBar("back",theme.getImage("back-command.png"),ev->{hi.show();});
       
       page1.show();});*/
-       this.getToolbar().addCommandToSideMenu("page 1", null, e->{
-      EvenementAjouterInterface page1= new EvenementAjouterInterface();
-        page1.getToolbar().addCommandToLeftBar("back",theme.getImage("back-command.png"),ev->{this.show();});
-      
-      page1.show();});
+       this.getToolbar().addMaterialCommandToSideMenu("Mon Profil", FontImage.MATERIAL_HOME, e->{
+            new MembreAfficherInterface().show();
+            
+       });
+         this.getToolbar().addMaterialCommandToSideMenu("Evenement", FontImage.MATERIAL_EVENT, e->{
+            new EvenementAfficherInterface().show();
+            
+       });
           
         //creer un groupe 
         Button ajouterBtn = new Button("Créer un evenement");

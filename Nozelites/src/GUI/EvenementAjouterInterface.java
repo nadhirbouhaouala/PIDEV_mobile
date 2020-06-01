@@ -38,6 +38,7 @@ import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.NumericConstraint;
 import com.codename1.ui.validation.RegexConstraint;
 import com.codename1.ui.validation.Validator;
+import utils.Session;
 
 /**
  *
@@ -45,7 +46,7 @@ import com.codename1.ui.validation.Validator;
  */
 public class EvenementAjouterInterface extends com.codename1.ui.Form{
      private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = Session.id_Session;
      private FileUploader file;
     String fileNameInServer;
     public String imgPath;

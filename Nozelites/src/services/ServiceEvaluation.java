@@ -73,8 +73,8 @@ public class ServiceEvaluation {
                 g.setId((int)id);
                  g.setId_r((int)Float.parseFloat(obj.get("idR").toString().substring(obj.get("idR").toString().indexOf("=")+1, obj.get("idR").toString().indexOf(",")-2)));
                // g.setId_cible((int)Float.parseFloat(obj.get("id_cible").toString().substring(obj.get("id_cible").toString().indexOf("=")+1, obj.get("id_cible").toString().indexOf(",")-2)));
-               float not = Float.parseFloat(obj.get("note").toString());
-                g.setNote((int)not);
+               float not = Float.parseFloat(obj.get("rating").toString());
+                g.setRating((int)not);
            
                
                 

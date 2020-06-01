@@ -5,26 +5,33 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreReclamationAjouterInterface.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceEvaluation.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreReclamationAfficherInterface.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/ReclamationModifierInterface.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/utils/DataSource.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/utils/Statics.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupesInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/OffreInterface.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceGroupe.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreReclamationAjouterInterface1.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreInterface.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceGroupeMembre.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Evaluation.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Portfolio.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Reclamation.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceMembre.java</file>
-            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeAjouterInterface.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeModifierInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceOffre.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/GroupeMembre.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Groupe.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/NoteInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/services/ServiceEvaluation.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/ReclamationModifierInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/utils/DataSource.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/utils/Statics.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreReclamationAjouterInterface1.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Portfolio.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/GuiComponent.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/utils/Session.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreLoginInterface.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/entities/Reclamation.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/pidevMOBILE/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeAjouterInterface.java</file>
         </group>
     </open-files>
 </project-private>

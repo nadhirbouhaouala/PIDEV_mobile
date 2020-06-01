@@ -29,6 +29,7 @@ import services.ServiceGroupe;
 import services.ServiceGroupeMembre;
 import services.ServiceMembre;
 import services.ServiceReclamation;
+import utils.Session;
 
 /**
  *
@@ -37,7 +38,7 @@ import services.ServiceReclamation;
 public class MembreReclamationAfficherInterface extends com.codename1.ui.Form{
     ComboBox selecteur = new ComboBox();
      private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = Session.getId_Session();
     private ArrayList<Membre> list_m = new ServiceMembre().Afficher();
 
     public MembreReclamationAfficherInterface() {
@@ -61,21 +62,9 @@ public class MembreReclamationAfficherInterface extends com.codename1.ui.Form{
        
         
         
-        //ajouter une reclamation
-         /*com.codename1.ui.ComboBox selecteur=new com.codename1.ui.ComboBox(); 
-        selecteur.addItem("groupe"); 
-        selecteur.addItem("evenement"); */
-        //selecteur.addItem("Al Hiwar Ettounsi"); 
-        //hi.add(cb1);
+     
         
-        
-      /*  TextField description = new TextField(null, "Description");//textfield
-        Container etatContainer = new Container(BoxLayout.x());
-        OnOffSwitch etat = new OnOffSwitch();//switch
-        etat.addActionListener((e) -> {
-            if(etat.isValue())System.out.println("on");
-            else System.out.println("off");
-        });*/
+       
         
        /* Button save = new Button("Enregistrer");
         save.addActionListener(new ActionListener() {

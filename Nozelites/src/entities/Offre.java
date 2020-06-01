@@ -16,6 +16,30 @@ public class Offre {
     private int idEmetteur,idRecepteur;
     private String entreprise,domaine,poste;
     private String requis,description;
+    private String date,etat;
+    private String nom,prenom;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+    
+    
+    
+    public Offre(){
+        
+    }
 
     public Offre(String type, int idEmetteur, int idRecepteur, String entreprise, String domaine, String poste, String requis, String description) {
         this.type = type;
@@ -79,6 +103,24 @@ public class Offre {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+    
+    
 
     public int getId() {
         return id;

@@ -7,6 +7,9 @@ import GUI.PublicationInterface;
 import GUI.PublicationModifierInterface;
 import GUI.MembreGroupesInterface;
 
+import GUI.EvenementAfficherInterface;
+
+
 import GUI.MembreInterface;
 import GUI.MembreLoginInterface;
 

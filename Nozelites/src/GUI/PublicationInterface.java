@@ -178,7 +178,7 @@ public class PublicationInterface extends com.codename1.ui.Form  {
         Label lab2=new Label("Description:       " +g.getDescription());
       
         
-       // System.out.println("hedhouma el nwamr" + g.getId_publicateur());
+        System.out.println("hedhouma el nwamr" + g.getId_publicateur());
           Button Reclamer = new Button();
         Reclamer.addActionListener(new ActionListener() {
             @Override
@@ -187,16 +187,11 @@ public class PublicationInterface extends com.codename1.ui.Form  {
                 
             }
         });
-         Button Like = new Button();
-           Like.setMaterialIcon(FontImage.MATERIAL_FAVORITE);
         Button Dislike = new Button();
         Dislike.setMaterialIcon(FontImage.MATERIAL_DANGEROUS);
-           // cacher(Dislike);
         Dislike.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-              //  cacher(Dislike);
-               // apparaitre(Like);
                   ArrayList<Publication_entities> list_gm = new ServicePublication().Afficher();
                 ServicePublication sgm = new ServicePublication();
                 for(Publication_entities gmi : list_gm)
@@ -207,13 +202,12 @@ public class PublicationInterface extends com.codename1.ui.Form  {
                 System.out.println("Dislike" + g.getNb_jaime());
             }
         });
-       
-      
+        Button Like = new Button();
+        Like.setMaterialIcon(FontImage.MATERIAL_FAVORITE);
         Like.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                cacher(Like);
-               // apparaitre(Dislike);
+              //  cacher(Like);
                 ArrayList<Publication_entities> list_gm = new ServicePublication().Afficher();
                 ServicePublication sgm = new ServicePublication();
                 for(Publication_entities gmi : list_gm)
@@ -221,7 +215,7 @@ public class PublicationInterface extends com.codename1.ui.Form  {
                         sgm.supprimer(gmi);
                 new ServicePublication().jaime(g);
                 new PublicationInterface().show();
-             //   System.out.println("j'aime" + g.getNb_jaime());
+                System.out.println("j'aime" + g.getNb_jaime());
                // cn3.add(Dislike);
                 
             }
@@ -313,7 +307,7 @@ public class PublicationInterface extends com.codename1.ui.Form  {
               B.setHidden(true);
           }
            private void apparaitre(Button B) {
-              B.setHidden(false);
+              B.setHidden(true);
           } 
    
  

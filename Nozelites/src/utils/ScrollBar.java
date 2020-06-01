@@ -25,8 +25,9 @@ import java.util.TimerTask;
  *
  * @author salon2
  */
+
 public class ScrollBar extends Container implements ScrollListener {
-    private final Container target;
+     private final Container target;
     private final DragHandle dragHandle;
     
     

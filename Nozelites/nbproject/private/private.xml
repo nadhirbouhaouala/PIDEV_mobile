@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/PublicationInterface.java</file>
             <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreGroupesInterface.java</file>
             <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/OffreInterface.java</file>
@@ -21,6 +21,13 @@
             <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
             <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/services/ServiceFavoris.java</file>
             <file>file:/C:/Users/salon2/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreGroupeModifierInterface.java</file>
+=======
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/EvenementAfficherInterface.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreLoginInterface.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/EvenementAjouterInterface.java</file>
+            <file>file:/C:/Users/syrine/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreInterface.java</file>
+>>>>>>> 6471fc94bbf56a77ff8a05707e1253611358311c
         </group>
     </open-files>
 </project-private>

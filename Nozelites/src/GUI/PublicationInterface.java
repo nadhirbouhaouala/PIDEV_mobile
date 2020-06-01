@@ -40,6 +40,7 @@ import entities.Favoris_entities;
 import utils.ScrollBar;
 import static com.codename1.ui.ComponentSelector.$;
 import services.ServiceFavoris;
+import utils.Session;
 
 /**
  *
@@ -57,7 +58,7 @@ public class PublicationInterface extends com.codename1.ui.Form  {
     public PublicationInterface()  {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
         
-        setTitle("Mes Publications");
+       setTitle("Mes Publications");
         setLayout(BoxLayout.y());
         theme = UIManager.initFirstTheme("/MembreGroupes");
         
@@ -71,7 +72,7 @@ public class PublicationInterface extends com.codename1.ui.Form  {
          Component scrollableCnt2 = makeScrollable(cnt2);
       
         tab.addTab("Mon Forum", scrollableCnt);
-        tab.addTab("Mes Publications", scrollableCnt2);
+        //tab.addTab("Mes Publications", scrollableCnt2);
         
       
         
@@ -177,12 +178,25 @@ public class PublicationInterface extends com.codename1.ui.Form  {
         Label lab2=new Label("Description:       " +g.getDescription());
       
         
-        System.out.println("hedhouma el nwamr" + g.getId_publicateur());
+       // System.out.println("hedhouma el nwamr" + g.getId_publicateur());
+          Button Reclamer = new Button();
+        Reclamer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+       
+                
+            }
+        });
+         Button Like = new Button();
+           Like.setMaterialIcon(FontImage.MATERIAL_FAVORITE);
         Button Dislike = new Button();
         Dislike.setMaterialIcon(FontImage.MATERIAL_DANGEROUS);
+           // cacher(Dislike);
         Dislike.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+              //  cacher(Dislike);
+               // apparaitre(Like);
                   ArrayList<Publication_entities> list_gm = new ServicePublication().Afficher();
                 ServicePublication sgm = new ServicePublication();
                 for(Publication_entities gmi : list_gm)
@@ -193,19 +207,21 @@ public class PublicationInterface extends com.codename1.ui.Form  {
                 System.out.println("Dislike" + g.getNb_jaime());
             }
         });
-        Button Like = new Button();
-        Like.setMaterialIcon(FontImage.MATERIAL_FAVORITE);
+       
+      
         Like.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                  ArrayList<Publication_entities> list_gm = new ServicePublication().Afficher();
+                cacher(Like);
+               // apparaitre(Dislike);
+                ArrayList<Publication_entities> list_gm = new ServicePublication().Afficher();
                 ServicePublication sgm = new ServicePublication();
                 for(Publication_entities gmi : list_gm)
                     if(gmi.getId_groupe()==g.getId())
                         sgm.supprimer(gmi);
                 new ServicePublication().jaime(g);
                 new PublicationInterface().show();
-                System.out.println("j'aime" + g.getNb_jaime());
+             //   System.out.println("j'aime" + g.getNb_jaime());
                // cn3.add(Dislike);
                 
             }
@@ -245,7 +261,7 @@ public class PublicationInterface extends com.codename1.ui.Form  {
         
 //        ImageViewer imgv=new ImageViewer(theme.getImage("groupes.png"));
         cn2.add(lab).add(lab2);;
-      if (g.getId_publicateur() == 10)
+      if (g.getId_publicateur() == Session.id_Session)
       {
         cn3.add(supprimerBtn).add(modifierBtn);
       }
@@ -254,7 +270,6 @@ public class PublicationInterface extends com.codename1.ui.Form  {
           //  System.out.println("dislike "+Dislike.getState());
 
         cn3.add(Like).add(Dislike);
-              Like.pressed(); 
 
         
         cn1.add(BorderLayout.CENTER,v );
@@ -294,6 +309,13 @@ public class PublicationInterface extends com.codename1.ui.Form  {
         $(sc).selectAllStyles().setBgColor(0xffffff).setBgTransparency(255);
         return sc;
     }
+          private void cacher(Button B) {
+              B.setHidden(true);
+          }
+           private void apparaitre(Button B) {
+              B.setHidden(false);
+          } 
+   
  
 
  

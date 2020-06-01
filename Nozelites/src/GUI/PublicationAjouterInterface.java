@@ -37,6 +37,7 @@ import com.codename1.ui.validation.Validator;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.NumericConstraint;
 import com.codename1.ui.validation.RegexConstraint;
+import utils.Session;
 
 
 /**
@@ -130,7 +131,7 @@ public class PublicationAjouterInterface extends com.codename1.ui.Form {
                      Dialog.show("Erreur", val.getErrorMessage(titre) + " and "+ val.getErrorMessage(description)  , "OK", "Cancel");
                     
                 } else {
-                sg.ajouter(new Publication_entities(titre.getText(), description.getText(),0,fileNameInServer,1,10,0));
+                sg.ajouter(new Publication_entities(titre.getText(), description.getText(),0,fileNameInServer,1,Session.id_Session,0));
                 showToast("Votre Publication est ajoutée avec succées ");
                 InfiniteProgress bar = new InfiniteProgress();
                     Showbar(bar);

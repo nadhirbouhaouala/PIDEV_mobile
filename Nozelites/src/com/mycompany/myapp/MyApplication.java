@@ -1,9 +1,18 @@
 package com.mycompany.myapp;
 
 
+
 import GUI.MembreGroupeAjouterInterface;
 import GUI.PublicationInterface;
 import GUI.PublicationModifierInterface;
+import GUI.MembreGroupesInterface;
+
+import GUI.MembreInterface;
+import GUI.MembreLoginInterface;
+
+import GUI.OffreInterface;
+
+
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -51,18 +60,11 @@ public class MyApplication {
     }
     
     public void start() {
-        /*if(current != null){
-            current.show();
-            return;
-        }
-        Form hi = new Form("Hi World", BoxLayout.y());
-        hi.add(new Label("Hi World"));
-        hi.show();*/
-       // Publication_entities P = new Publication_entities("aa","aa",15,"a",1,10,0);
-        new PublicationInterface().show();
-        //new MembreGroupeAjouterInterface().show();
-       // new PublicationModifierInterface(P).show();
-        
+       
+
+        new MembreLoginInterface().show();
+
+
     }
 
     public void stop() {

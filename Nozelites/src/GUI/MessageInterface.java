@@ -9,6 +9,7 @@ import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.TextArea;
+import com.codename1.ui.TextComponent;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -42,7 +43,10 @@ public class MessageInterface extends com.codename1.ui.Form {
         
         TextField dest = new TextField("", "Destinataire");//textfield
         TextField objet1 = new TextField(objet, "Objet");//textfield
-        TextField texte1 = new TextField(texte,"Votre message");//textfield
+        TextComponent texte1 = new TextComponent();
+        texte1.text(texte);
+        texte1.multiline(true);
+        texte1.rows(10);
             
         Button save = new Button("Envoyer");
         
@@ -109,7 +113,7 @@ public class MessageInterface extends com.codename1.ui.Form {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-//////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

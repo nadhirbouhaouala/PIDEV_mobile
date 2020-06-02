@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Font;
@@ -55,14 +56,14 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
                     Container objetf = new Container();
                     objetf.add(objet).add(objet1);
                     
-                    Label texte = new Label("Texte : ");
+                    Label texte = new Label("Message : ");
                     texte.getAllStyles().setFont(Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_BOLD, Font.SIZE_MEDIUM));
                     texte.getAllStyles().setFgColor(0xc30f10);
-                    Label texte1 = new Label(m.getTexte());
+                    SpanLabel texte1 = new SpanLabel(m.getTexte());
                     Container textef = new Container();
                     textef.add(texte).add(texte1);
                     
-                    Label emetteur = new Label("De : ");
+                    Label emetteur = new Label("À : ");
                     emetteur.getAllStyles().setFont(Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_BOLD, Font.SIZE_MEDIUM));
                     emetteur.getAllStyles().setFgColor(0xc30f10);
                     Label emetteur1 = new Label(m.getNomD()+" "+m.getPrenomD());
@@ -125,10 +126,10 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
                     Container objetf = new Container();
                     objetf.add(objet).add(objet1);
                     
-                    Label texte = new Label("Texte : ");
+                    Label texte = new Label("Message : ");
                     texte.getAllStyles().setFont(Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_BOLD, Font.SIZE_MEDIUM));
                     texte.getAllStyles().setFgColor(0xc30f10);
-                    Label texte1 = new Label(m.getTexte());
+                    SpanLabel texte1 = new SpanLabel(m.getTexte());
                     Container textef = new Container();
                     textef.add(texte).add(texte1);
                     
@@ -198,7 +199,7 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-//////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

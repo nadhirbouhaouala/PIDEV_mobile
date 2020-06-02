@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Font;
@@ -103,7 +104,7 @@ public class OffreInterface extends com.codename1.ui.Form {
                     Label description = new Label("Description : ");
                     description.getAllStyles().setFont(Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_BOLD, Font.SIZE_MEDIUM));
                     description.getAllStyles().setFgColor(0xc30f10);
-                    Label description1 = new Label(o.getDescription());
+                    SpanLabel description1 = new SpanLabel(o.getDescription());
                     Container descriptionf = new Container();
                     descriptionf.add(description).add(description1);
                     
@@ -162,7 +163,7 @@ public class OffreInterface extends com.codename1.ui.Form {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

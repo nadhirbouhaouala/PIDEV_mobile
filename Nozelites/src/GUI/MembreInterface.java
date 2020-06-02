@@ -58,11 +58,12 @@ public class MembreInterface extends com.codename1.ui.Form {
         // Sidebar
         Image icon = theme.getImage("logoo.jpg");
         Container topBar = BorderLayout.center(new Label(icon));
+        this.getToolbar().addComponentToSideMenu(topBar);
         this.getToolbar().addMaterialCommandToSideMenu("Mon Profil", FontImage.MATERIAL_HOME, e->{
             new MembreAfficherInterface().show();
             
        });
-        this.getToolbar().addComponentToSideMenu(topBar);
+        
         //fin sidebar
         
         //this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -122,7 +123,7 @@ public class MembreInterface extends com.codename1.ui.Form {
     
     
     
-////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

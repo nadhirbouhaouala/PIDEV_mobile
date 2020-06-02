@@ -92,7 +92,7 @@ public class ServiceMembre {
     }
     
     public boolean ajouter(Membre m) {
-        String url = Statics.BASE_URL + "/user/membres/jsonAdd/" + m.getNom() + "/" + m.getPrenom() +"/"+m.getAge()+ "/" + m.getTel()+"/"+ m.getLogin() + "/" + m.getMdp() + "/" + m.getMail(); //création de l'URL
+        String url = Statics.BASE_URL + "/user/membres/jsonAdd/" + m.getNom() + "/" + m.getPrenom() +"/"+m.getAge()+ "/" + m.getTel()+"/"+ m.getLogin() + "/" + m.getMdp() + "/" + m.getMail()+"/"+m.getImage(); //création de l'URL
         request.setUrl(url);// Insertion de l'URL de notre demande de connexion
         request.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

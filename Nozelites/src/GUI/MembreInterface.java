@@ -51,7 +51,7 @@ public class MembreInterface extends com.codename1.ui.Form {
                 add(addItemMembre(mi));
         } 
         
-        this.getToolbar().addCommandToOverflowMenu("deconnexion", theme.getImage("back-command.png"), ev->{
+        this.getToolbar().addCommandToOverflowMenu("Déconnexion", theme.getImage("back-command.png"), ev->{
                new MembreLoginInterface().show();
             });
         
@@ -73,11 +73,30 @@ public class MembreInterface extends com.codename1.ui.Form {
             
        });
 
-         this.getToolbar().addMaterialCommandToSideMenu("Evenement", FontImage.MATERIAL_EVENT, e->{
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
             new EvenementAfficherInterface().show();
 
             
        });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Inbox", FontImage.MATERIAL_MESSAGE, e->{
+            new MessageInboxInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Offres", FontImage.MATERIAL_PERSON, e->{
+            new OffreInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Statistiques", FontImage.MATERIAL_GRAPHIC_EQ, e->{
+            new StatistiqueInterface().show();
+
+            
+       });
+         
         this.getToolbar().addComponentToSideMenu(topBar);
         //fin sidebar
         
@@ -139,7 +158,7 @@ public class MembreInterface extends com.codename1.ui.Form {
     
     
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

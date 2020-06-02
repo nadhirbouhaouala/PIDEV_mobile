@@ -5,14 +5,21 @@
  */
 package GUI;
 
+import static GUI.OffreInterface.makeScrollable;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
+import com.codename1.ui.Component;
+import static com.codename1.ui.ComponentSelector.$;
 import com.codename1.ui.Container;
+import com.codename1.ui.Display;
 import com.codename1.ui.Font;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -20,6 +27,8 @@ import com.codename1.ui.util.UIBuilder;
 import entities.Message;
 import java.util.ArrayList;
 import services.ServiceMessage;
+import utils.ScrollBar;
+import utils.Session;
 
 /**
  * GUI builder created Form
@@ -28,8 +37,9 @@ import services.ServiceMessage;
  */
 public class MessageInboxInterface extends com.codename1.ui.Form {
 
+    Session s = new Session();
     private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = s.getId_Session();
     
     public MessageInboxInterface() {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -42,8 +52,8 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
         
         ServiceMessage srvm = new ServiceMessage();
         ArrayList<Message> list_m = srvm.Afficher();
-        Container cnt1 = ui.createContainer(theme, "GUI 2");//ajouter graphiquement un GUI element
-        Container cnt2 = ui.createContainer(theme, "GUI 2");//ajouter graphiquement un GUI element
+        Container cnt1 = new Container(BoxLayout.y());//ajouter graphiquement un GUI element
+        Container cnt2 = new Container(BoxLayout.y());//ajouter graphiquement un GUI element
         
         for(Message m : list_m)
         {
@@ -176,30 +186,84 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
                 }
         }
         
-        tab.addTab("Envoyés", cnt1);
-        tab.addTab("Reçus",cnt2);
+        Component cnt1scroll = makeScrollable(cnt1);
+        Component cnt2scroll = makeScrollable(cnt2);
+        
+        tab.addTab("Envoyés", cnt1scroll);
+        tab.addTab("Reçus",cnt2scroll);
         this.add(tab);
         
-        this.getToolbar().addCommandToLeftSideMenu("Offres", theme.getImage("rocket.png"), ev->{
-               new OffreInterface().show();
-            });
-        this.getToolbar().addCommandToLeftSideMenu("Messages", theme.getImage("digital-marketing.png"), ev->{
-               new MessageInboxInterface().show();
-            });
-        this.getToolbar().addCommandToLeftSideMenu("Statistiques", theme.getImage("graphic.png"), ev->{
-               new StatistiqueInterface().show();
-            });
+        
+        
+        // Sidebar
+        Image icon = theme.getImage("logoo.jpg");
+        Container topBar = BorderLayout.center(new Label(icon));
+        this.getToolbar().addMaterialCommandToSideMenu("Mon Profil", FontImage.MATERIAL_HOME, e->{
+            new MembreAfficherInterface().show();
+            
+       });
+
+
+        this.getToolbar().addMaterialCommandToSideMenu("Mes Réclamations", FontImage.MATERIAL_19MP, e->{
+            new MembreReclamationAfficherInterface().show();  });
+
+
+           this.getToolbar().addMaterialCommandToSideMenu("Mon Forum", FontImage.MATERIAL_HOME, e->{
+            new PublicationInterface().show();
+            
+       });
+
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
+            new EvenementAfficherInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Inbox", FontImage.MATERIAL_MESSAGE, e->{
+            new MessageInboxInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Offres", FontImage.MATERIAL_PERSON, e->{
+            new OffreInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Statistiques", FontImage.MATERIAL_GRAPHIC_EQ, e->{
+            new StatistiqueInterface().show();
+
+            
+       });
+         
+        this.getToolbar().addComponentToSideMenu(topBar);
+        //fin sidebar
         
         this.getToolbar().addCommandToRightBar("Envoyer", theme.getImage("cal_right_arrow.png"), ev->{
                new MessageInterface("","",-1).show();
             });
     }
     
+    public static Component makeScrollable(final Component scrollable) {
+        if(!Display.getInstance().isDesktop()) {
+            return scrollable;
+        }
+        if (!(scrollable instanceof Container)) {
+            return scrollable;
+        }
+        ScrollBar scroll = new ScrollBar((Container)scrollable, ScrollBar.Y_AXIS);
+        Container sc = BorderLayout.center(scrollable).
+                add(BorderLayout.EAST, scroll);
+        $(sc).selectAllStyles().setBgColor(0xffffff).setBgTransparency(255);
+        return sc;
+    }
+    
     public MessageInboxInterface(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

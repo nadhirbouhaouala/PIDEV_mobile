@@ -12,9 +12,12 @@ import com.codename1.charts.renderers.SimpleSeriesRenderer;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.charts.views.PieChart;
 import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.TextComponent;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -22,6 +25,7 @@ import com.codename1.ui.util.UIBuilder;
 import entities.Offre;
 import java.util.ArrayList;
 import services.ServiceOffre;
+import utils.Session;
 
 /**
  * GUI builder created Form
@@ -30,8 +34,9 @@ import services.ServiceOffre;
  */
 public class StatistiqueInterface extends com.codename1.ui.Form {
 
+    Session s = new Session();
     private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = s.getId_Session();
     
     public StatistiqueInterface() {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -43,6 +48,8 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
         UIBuilder ui = new UIBuilder();
         Container cnt1 = ui.createContainer(theme, "GUI 1");//ajouter graphiquement un GUI element
         cnt1.setLayout(BoxLayout.y());
+        Container cnt2 = ui.createContainer(theme, "GUI 2");//ajouter graphiquement un GUI element
+        cnt2.setLayout(BoxLayout.y());
         
         ServiceOffre srv = new ServiceOffre();
         ArrayList<Offre> list_o = srv.Afficher();
@@ -52,7 +59,13 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
         int offredoute = 0;
         int nboffres = 0;
         
-        tab.addTab("", cnt1);
+        int offreouim = 0;
+        int offrenonm = 0;
+        int offredoutem = 0;
+        int nboffresm = 0;
+        
+        tab.addTab("Global", cnt1);
+        tab.addTab("Partiel", cnt2);
         
         this.add(tab);
         
@@ -60,17 +73,34 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
         {
             nboffres++;
             
+            if(o.getIdRecepteur() == id_user_actif)
+            {
+                nboffresm++;
+            }
+            
             if(o.getEtat().equals("Acceptée"))
             {
                 offreoui++;
+                if(o.getIdRecepteur() == id_user_actif)
+                {
+                    offreouim++;
+                }
             }
             else if (o.getEtat().equals("Refusée"))
             {
                 offrenon++;
+                if(o.getIdRecepteur() == id_user_actif)
+                {
+                    offrenonm++;
+                }
             }
             else
             {
                 offredoute++;
+                if(o.getIdRecepteur() == id_user_actif)
+                {
+                    offredoutem++;
+                }
             }
         }
         
@@ -83,15 +113,63 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
         double[] values = new double[]{offreoui, offrenon, offredoute};
         cnt1.add(createPieChartForm(values));
         
-        this.getToolbar().addCommandToLeftSideMenu("Offres", theme.getImage("rocket.png"), ev->{
-               new OffreInterface().show();
+        TextComponent textem = new TextComponent();
+        textem.text("Vous avez reçu "+nboffresm+" offres sur notre plateforme, réparties comme suit : ");
+        textem.multiline(true);
+        
+        cnt2.add(textem);
+        
+        double[] valuesm = new double[]{offreouim, offrenonm, offredoutem};
+        cnt2.add(createPieChartForm(valuesm));
+        
+        this.getToolbar().addCommandToOverflowMenu("Déconnexion", theme.getImage("back-command.png"), ev->{
+               new MembreLoginInterface().show();
             });
-        this.getToolbar().addCommandToLeftSideMenu("Messages", theme.getImage("digital-marketing.png"), ev->{
-               new MessageInboxInterface().show();
-            });
-        this.getToolbar().addCommandToLeftSideMenu("Statistiques", theme.getImage("graphic.png"), ev->{
-               new StatistiqueInterface().show();
-            });
+        
+        // Sidebar
+        Image icon = theme.getImage("logoo.jpg");
+        Container topBar = BorderLayout.center(new Label(icon));
+        this.getToolbar().addMaterialCommandToSideMenu("Mon Profil", FontImage.MATERIAL_HOME, e->{
+            new MembreAfficherInterface().show();
+            
+       });
+
+
+        this.getToolbar().addMaterialCommandToSideMenu("Mes Réclamations", FontImage.MATERIAL_19MP, e->{
+            new MembreReclamationAfficherInterface().show();  });
+
+
+           this.getToolbar().addMaterialCommandToSideMenu("Mon Forum", FontImage.MATERIAL_HOME, e->{
+            new PublicationInterface().show();
+            
+       });
+
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
+            new EvenementAfficherInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Inbox", FontImage.MATERIAL_MESSAGE, e->{
+            new MessageInboxInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Offres", FontImage.MATERIAL_PERSON, e->{
+            new OffreInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Statistiques", FontImage.MATERIAL_GRAPHIC_EQ, e->{
+            new StatistiqueInterface().show();
+
+            
+       });
+         
+        this.getToolbar().addComponentToSideMenu(topBar);
+        //fin sidebar
     }
     
     public StatistiqueInterface(com.codename1.ui.util.Resources resourceObjectInstance) {
@@ -101,7 +179,7 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
     private DefaultRenderer buildCategoryRenderer(int[] colors) {
     DefaultRenderer renderer = new DefaultRenderer();
     renderer.setLabelsTextSize(50);
-    renderer.setLegendTextSize(50);
+    renderer.setLegendTextSize(0);
     renderer.setMargins(new int[]{60, 90, 45, 0});
     for (int color : colors) {
         SimpleSeriesRenderer r = new SimpleSeriesRenderer();
@@ -135,7 +213,7 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
         DefaultRenderer renderer = buildCategoryRenderer(colors);
         /*renderer.setZoomButtonsVisible(true);
         renderer.setZoomEnabled(true);*/
-        renderer.setLabelsColor(ColorUtil.GRAY);
+        renderer.setLabelsColor(ColorUtil.BLACK);
         renderer.setChartTitleTextSize(100);
         renderer.setDisplayValues(true);
         renderer.setShowLabels(true);
@@ -154,7 +232,7 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
     }
 
 
-//////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

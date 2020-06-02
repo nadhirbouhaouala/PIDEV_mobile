@@ -27,7 +27,7 @@ import utils.DataSource;
 public class ServiceMembre {
     
     public ArrayList<Membre> membres;
-    
+   
     private ConnectionRequest request;
     private boolean responseResult;
     
@@ -89,6 +89,54 @@ public class ServiceMembre {
         });
         NetworkManager.getInstance().addToQueueAndWait(request);
         return membres;
+    }
+    
+    public boolean ajouter(Membre m) {
+        String url = Statics.BASE_URL + "/user/membres/jsonAdd/" + m.getNom() + "/" + m.getPrenom() +"/"+m.getAge()+ "/" + m.getTel()+"/"+ m.getLogin() + "/" + m.getMdp() + "/" + m.getMail(); //création de l'URL
+        request.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                responseResult = request.getResponseCode() == 200; //Code HTTP 200 OK
+                request.removeResponseListener(this); //Supprimer cet actionListener
+                /* une fois que nous avons terminé de l'utiliser.
+                La ConnectionRequest req est unique pour tous les appels de 
+                n'importe quelle méthode du Service task, donc si on ne supprime
+                pas l'ActionListener il sera enregistré et donc éxécuté même si 
+                la réponse reçue correspond à une autre URL(get par exemple)*/
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return responseResult;
+    }
+    
+    public Membre AfficherProfil(int id){
+        String url = Statics.BASE_URL+"/user/membres/jsonShow/"+id;
+        ArrayList<Membre> list = this.Afficher();
+        for(Membre m : list){
+            if(m.getUsrId() == id){
+                return m;
+            }
+        }
+        return null;
+    }
+    
+    public boolean modifier(Membre m)
+    {
+        
+        String url = Statics.BASE_URL + "/user/membres/jsonEdit/"+m.getUsrId()+"/" +m.getNom()+"/" +m.getPrenom() +"/"+m.getAge()+"/"+m.getMail()+"/"+m.getTel();
+        request.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        request.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                responseResult = request.getResponseCode() == 200; 
+                request.removeResponseListener(this); 
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        return responseResult;
     }
     
 }

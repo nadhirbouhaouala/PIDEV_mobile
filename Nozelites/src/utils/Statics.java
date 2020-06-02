@@ -10,6 +10,9 @@ package utils;
  * @author bhk
  */
 public class Statics {
+
     public static final String BASE_URL="http://localhost:8181/PIDEV_Web/Nozelites/web/app_dev.php";//"jdbc:mysql://localhost:3306/nozelites";
-    
+
+
+
 }

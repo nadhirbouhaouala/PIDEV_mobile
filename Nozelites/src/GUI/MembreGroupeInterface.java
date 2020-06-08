@@ -43,7 +43,9 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
     
     private Resources theme;
     private int id_user_actif = 9;
-    
+
+    public static Groupe gm ;
+
     public MembreGroupeInterface(Groupe groupe) {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
         setTitle(groupe.getTitre());
@@ -75,6 +77,13 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
                 new MembreGroupeModifierInterface(groupe).show();
             }
         });
+        Button SignalerBtn = new Button("Signaler Groupe");
+        SignalerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                new MembreReclamationAjouterInterface(groupe.getId()).show();
+            }
+        });
         Button supprimerBtn = new Button("Supprimer");
         supprimerBtn.addActionListener(new ActionListener() {
             @Override
@@ -89,8 +98,8 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
             }
         });
         Container cn3=new Container(BoxLayout.x());
-        cn3.add(supprimerBtn).add(modifierBtn);
-        
+        cn3.add(supprimerBtn).add(modifierBtn).add(SignalerBtn);
+      //  cn3.add(SignalerBtn);
         Container cn4=new Container(BoxLayout.y());
         
         cn4.add(titre).add(description).add(etat);
@@ -187,7 +196,9 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
     }
     
 
-//////-- DON'T EDIT BELOW THIS LINE!!!
+
+
+//////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

@@ -7,16 +7,23 @@ package GUI;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Image;
+import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
+import com.codename1.ui.TextArea;
+import com.codename1.ui.TextComponent;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
 import entities.Message;
 import services.ServiceMessage;
+import utils.Session;
 
 /**
  * GUI builder created Form
@@ -25,8 +32,9 @@ import services.ServiceMessage;
  */
 public class MessageModifierInterface extends com.codename1.ui.Form {
 
+    Session s = new Session();
     private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = s.getId_Session();
     
     public MessageModifierInterface(String objet, String texte,int idDest,int id) {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -40,8 +48,12 @@ public class MessageModifierInterface extends com.codename1.ui.Form {
         Container cnt1 = ui.createContainer(theme, "GUI 1");//ajouter graphiquement un GUI element 
         
         TextField objet1 = new TextField(objet, "Objet");//textfield
-        TextField texte1 = new TextField(texte,"Votre message");//textfield
-            
+        TextComponent texte1 = new TextComponent();//textfield
+        texte1.text(texte);
+        texte1.multiline(true);
+        texte1.rows(10);
+        
+        
         Button save = new Button("Envoyer");
         
         cnt1.setLayout(BoxLayout.y());
@@ -63,22 +75,62 @@ public class MessageModifierInterface extends com.codename1.ui.Form {
             }
             });
         
-        this.getToolbar().addCommandToLeftSideMenu("Offres", theme.getImage("rocket.png"), ev->{
-               new OffreInterface().show();
+        this.getToolbar().addCommandToOverflowMenu("Déconnexion", theme.getImage("back-command.png"), ev->{
+               new MembreLoginInterface().show();
             });
-        this.getToolbar().addCommandToLeftSideMenu("Messages", theme.getImage("digital-marketing.png"), ev->{
-               new MessageInboxInterface().show();
-            });
-        this.getToolbar().addCommandToLeftSideMenu("Statistiques", theme.getImage("graphic.png"), ev->{
-               new StatistiqueInterface().show();
-            });
+        
+        // Sidebar
+        Image icon = theme.getImage("logoo.jpg");
+        Container topBar = BorderLayout.center(new Label(icon));
+        this.getToolbar().addMaterialCommandToSideMenu("Mon Profil", FontImage.MATERIAL_HOME, e->{
+            new MembreAfficherInterface().show();
+            
+       });
+
+
+        this.getToolbar().addMaterialCommandToSideMenu("Mes Réclamations", FontImage.MATERIAL_19MP, e->{
+            new MembreReclamationAfficherInterface().show();  });
+
+
+           this.getToolbar().addMaterialCommandToSideMenu("Mon Forum", FontImage.MATERIAL_HOME, e->{
+            new PublicationInterface().show();
+            
+       });
+
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
+            new EvenementAfficherInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Inbox", FontImage.MATERIAL_MESSAGE, e->{
+            new MessageInboxInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Offres", FontImage.MATERIAL_PERSON, e->{
+            new OffreInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Statistiques", FontImage.MATERIAL_GRAPHIC_EQ, e->{
+            new StatistiqueInterface().show();
+
+            
+       });
+         
+        this.getToolbar().addComponentToSideMenu(topBar);
+        //fin sidebar
     }
     
     public MessageModifierInterface(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-////////////-- DON'T EDIT BELOW THIS LINE!!!
+
+////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

@@ -6,6 +6,8 @@
 
 package entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author salon2
@@ -84,6 +86,30 @@ public class Publication_entities {
         @Override
     public String toString() {
         return "Publication{" + "titre=" + titre + ", description=" + description + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Publication_entities other = (Publication_entities) obj;
+        if (!Objects.equals(this.titre, other.titre)) {
+            return false;
+        }
+        return true;
     }
     
 }

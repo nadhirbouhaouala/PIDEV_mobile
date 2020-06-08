@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nebil/Desktop/PIDEV_mobile/Nozelites/src/utils/DataSource.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreInterface.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV_mobile/Nozelites/src/GUI/MembreAfficherInterface.java</file>
@@ -26,6 +27,14 @@
             <file>file:/C:/Users/Nebil/Desktop/PIDEV_mobile/Nozelites/src/services/ServiceMembre.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV_mobile/Nozelites/src/services/ServiceMessage.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV_mobile/Nozelites/src/utils/Session.java</file>
+=======
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/MessageInboxInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/StatistiqueInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/MessageModifierInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/OffreInterface.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/services/ServiceMembre.java</file>
+            <file>file:/C:/xampp/htdocs/PIDEV_mobile/Nozelites/src/GUI/MessageInterface.java</file>
+>>>>>>> a6c262d5be752f37165c33810ca148e7e8cb53b7
         </group>
     </open-files>
 </project-private>

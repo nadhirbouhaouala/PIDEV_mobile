@@ -27,7 +27,7 @@ import utils.DataSource;
 public class ServiceMembre {
     
     public ArrayList<Membre> membres;
-    
+   
     private ConnectionRequest request;
     private boolean responseResult;
     

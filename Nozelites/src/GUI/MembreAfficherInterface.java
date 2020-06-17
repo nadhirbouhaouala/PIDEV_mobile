@@ -51,7 +51,7 @@ private Resources theme;
         
         System.out.println(str);
         
-        Image img = URLImage.createToStorage(enc, "http://localhost/"+str, "http://localhost/"+str);
+        Image img = URLImage.createToStorage(enc, "http://localhost/3.2/"+str, "http://localhost/3.2/"+str);
         ImageViewer imgv1 = new ImageViewer(img);
         add(imgv1).add(Lnom).add(Lprenom).add(Lmail).add(Lage).add(modif);
         

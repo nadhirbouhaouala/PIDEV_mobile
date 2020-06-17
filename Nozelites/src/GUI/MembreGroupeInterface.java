@@ -26,6 +26,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
+import com.mycompany.myapp.MyApplication;
 import entities.Groupe;
 import entities.GroupeMembre;
 import entities.Membre;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import services.ServiceGroupe;
 import services.ServiceGroupeMembre;
 import services.ServiceMembre;
+import utils.Session;
 
 /**
  * GUI builder created Form
@@ -42,19 +44,19 @@ import services.ServiceMembre;
 public class MembreGroupeInterface extends com.codename1.ui.Form {
     
     private Resources theme;
-    private int id_user_actif = 9;
-
-    public static Groupe gm ;
-
+    
     public MembreGroupeInterface(Groupe groupe) {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
         setTitle(groupe.getTitre());
         setLayout(BoxLayout.y());
         theme = UIManager.initFirstTheme("/MembreGroupes");
+       
         
         ArrayList<GroupeMembre> list_gm = new ServiceGroupeMembre().Afficher();
     ArrayList<Groupe> list_g = new ServiceGroupe().Afficher();
     ArrayList<Membre> list_m = new ServiceMembre().Afficher();
+    
+    
         
         //Tabs : toolbar
         Tabs tab = new Tabs();
@@ -64,7 +66,26 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
         Container cnt2 = ui.createContainer(theme, "GUI 2");//ajouter graphiquement un GUI element
         tab.addTab("Membres", cnt2);
         Container cnt3 = ui.createContainer(theme, "GUI 3");//ajouter graphiquement un GUI element
-        if(groupe.getAutorisation()==1)tab.addTab("Inviter", cnt3);
+        boolean existe = false;
+        boolean admin = false;
+        for(Membre mi : list_m)
+        {
+            for(GroupeMembre gmi : list_gm)
+            {
+                existe = false;
+                if(gmi.getId_groupe()==groupe.getId() && gmi.getId_membre()==mi.getUsrId())
+                {
+                    existe=true;
+                    if(gmi.getEtat().equals("membre") || gmi.getEtat().equals("administrateur"))
+                    {
+                        cnt2.add(addItemMembre(mi,gmi.getEtat()));
+                        if(gmi.getEtat().equals("administrateur")&&gmi.getId_membre()==Session.id_Session)admin = true;
+                    }
+                }
+            }
+            if(existe==false)cnt3.add(addItemInvite(mi,groupe));
+        }
+        if(admin||groupe.getAutorisation()==1)tab.addTab("Inviter", cnt3);
         //groupe info
         Label titre = new Label("Titre : "+groupe.getTitre());
         Label description = new Label("Description : "+groupe.getDescription());
@@ -75,13 +96,6 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 new MembreGroupeModifierInterface(groupe).show();
-            }
-        });
-        Button SignalerBtn = new Button("Signaler Groupe");
-        SignalerBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                new MembreReclamationAjouterInterface(groupe.getId()).show();
             }
         });
         Button supprimerBtn = new Button("Supprimer");
@@ -98,9 +112,17 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
             }
         });
         Container cn3=new Container(BoxLayout.x());
-        cn3.add(supprimerBtn).add(modifierBtn).add(SignalerBtn);
-      //  cn3.add(SignalerBtn);
+        Button reclamation_btn = new Button("reclamer");
+        reclamation_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                new MembreReclamationAjouterInterface(groupe.getId()).show();
+            }
+        });
+        cn3.add(supprimerBtn).add(modifierBtn).add(reclamation_btn);
+        
         Container cn4=new Container(BoxLayout.y());
+        
         
         cn4.add(titre).add(description).add(etat);
         cnt1.add(cn4);
@@ -113,31 +135,21 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
                     for(Membre mi : list_m)
                         if(mi.getUsrId()==gmi.getId_membre())
                             cnt2.add(addItemMembre(mi,gmi.getEtat()));*/
-        boolean existe = false;
-        for(Membre mi : list_m)
-        {
-            for(GroupeMembre gmi : list_gm)
-            {
-                existe = false;
-                if(gmi.getId_groupe()==groupe.getId() && gmi.getId_membre()==mi.getUsrId())
-                {
-                    existe=true;
-                    if(gmi.getEtat().equals("membre") || gmi.getEtat().equals("administrateur"))
-                        cnt2.add(addItemMembre(mi,gmi.getEtat()));
-                }
-            }
-            if(existe==false)cnt3.add(addItemInvite(mi,groupe));
-        }
+        
       
              
         this.add(tab);
-        if(groupe.getAutorisation()==1)this.add(cn3);
+        if(admin||groupe.getAutorisation()==1)cnt1.add(cn3);
         System.out.println("cccs");
         
         
-        this.getToolbar().addCommandToLeftBar("retour", theme.getImage("back-command.png"), ev->{
+        this.getToolbar().addCommandToRightBar("retour", theme.getImage("back-command.png"), ev->{
                new MembreGroupesInterface().show();
             });
+        
+        getToolbar().addCommandToSideMenu("Mes groupes", null, e->{
+            new MembreGroupesInterface().show();
+        });
     }
     
     public MembreGroupeInterface(com.codename1.ui.util.Resources resourceObjectInstance) {
@@ -176,11 +188,14 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
         Label lab=new Label(m.getNom()+" "+m.getPrenom());
         Label lab2=new Label(m.getMail());
         Button btn=new Button("inviter");
+        
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 cn1.removeAll();
-                new ServiceGroupeMembre().ajouter(new GroupeMembre(1, g.getId(), m.getUsrId(), id_user_actif, "invitation"));
+                new ServiceGroupeMembre().ajouter(new GroupeMembre(1, g.getId(), m.getUsrId(), Session.id_Session, "invitation"));
+                repaint();
+                refreshTheme();
             }
         });
         
@@ -196,9 +211,7 @@ public class MembreGroupeInterface extends com.codename1.ui.Form {
     }
     
 
-
-
-//////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

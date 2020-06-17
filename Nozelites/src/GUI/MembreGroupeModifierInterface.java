@@ -29,7 +29,6 @@ import services.ServiceGroupeMembre;
 public class MembreGroupeModifierInterface extends com.codename1.ui.Form {
     
     private Resources theme;
-    private int id_user_actif = 9;
 
     public MembreGroupeModifierInterface(Groupe groupe) {
         //this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -68,17 +67,20 @@ public class MembreGroupeModifierInterface extends com.codename1.ui.Form {
         
         
         
-        this.getToolbar().addCommandToLeftBar("retour", theme.getImage("back-command.png"), ev->{
+        this.getToolbar().addCommandToRightBar("retour", theme.getImage("back-command.png"), ev->{
                new MembreGroupeInterface(groupe);
             });
+        
+        getToolbar().addCommandToSideMenu("Mes groupes", null, e->{
+            new MembreGroupesInterface().show();
+        });
     }
     
     public MembreGroupeModifierInterface(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-
-////////////-- DON'T EDIT BELOW THIS LINE!!!
+////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

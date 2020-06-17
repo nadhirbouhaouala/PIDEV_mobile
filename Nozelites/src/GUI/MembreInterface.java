@@ -74,6 +74,10 @@ public class MembreInterface extends com.codename1.ui.Form {
             new PublicationInterface().show();
             
        });
+           
+           this.getToolbar().addMaterialCommandToSideMenu("Mes Groupes", FontImage.MATERIAL_EVENT, e->{
+            new MembreGroupesInterface().show();
+       });
 
          this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
             new EvenementAfficherInterface().show();
@@ -121,7 +125,7 @@ public class MembreInterface extends com.codename1.ui.Form {
         String str = m.getImage();
         str = str.substring(str.indexOf("P"), str.length());   
         System.out.println(str);      
-        Image img = URLImage.createToStorage(enc, "http://localhost/"+str, "http://localhost/"+str);
+        Image img = URLImage.createToStorage(enc, "http://localhost/3.2/"+str, "http://localhost/3.2/"+str);
         
         ImageViewer imgv = new ImageViewer(img);
         
@@ -161,7 +165,7 @@ public class MembreInterface extends com.codename1.ui.Form {
     
     
 
-////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

@@ -184,6 +184,12 @@ public class OffreInterface extends com.codename1.ui.Form {
             
        });
          
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Groupes", FontImage.MATERIAL_EVENT, e->{
+            new MembreGroupesInterface().show();
+       });
+         
+         
+         
          this.getToolbar().addMaterialCommandToSideMenu("Inbox", FontImage.MATERIAL_MESSAGE, e->{
             new MessageInboxInterface().show();
 
@@ -226,7 +232,7 @@ public class OffreInterface extends com.codename1.ui.Form {
     }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

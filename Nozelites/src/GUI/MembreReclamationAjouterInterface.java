@@ -33,6 +33,7 @@ import entities.Reclamation;
 import java.util.ArrayList;
 import services.ServiceMembre;
 import services.ServiceReclamation;
+import utils.Session;
 
 /**
  *
@@ -41,7 +42,7 @@ import services.ServiceReclamation;
 public class MembreReclamationAjouterInterface extends com.codename1.ui.Form{
     ComboBox selecteur = new ComboBox();
      private Resources theme;
-    private int id_user_actif = 9;
+    private int id_user_actif = Session.getId_Session();
     private ArrayList<Membre> list_m = new ServiceMembre().Afficher();
 
 

@@ -212,6 +212,9 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
             new PublicationInterface().show();
             
        });
+           this.getToolbar().addMaterialCommandToSideMenu("Mes Groupes", FontImage.MATERIAL_EVENT, e->{
+            new MembreGroupesInterface().show();
+       });
 
          this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
             new EvenementAfficherInterface().show();
@@ -263,7 +266,7 @@ public class MessageInboxInterface extends com.codename1.ui.Form {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

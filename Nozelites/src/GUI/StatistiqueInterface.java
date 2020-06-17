@@ -143,6 +143,10 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
             new PublicationInterface().show();
             
        });
+           
+           this.getToolbar().addMaterialCommandToSideMenu("Mes Groupes", FontImage.MATERIAL_EVENT, e->{
+            new MembreGroupesInterface().show();
+       });
 
          this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
             new EvenementAfficherInterface().show();
@@ -232,7 +236,7 @@ public class StatistiqueInterface extends com.codename1.ui.Form {
     }
 
 
-////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

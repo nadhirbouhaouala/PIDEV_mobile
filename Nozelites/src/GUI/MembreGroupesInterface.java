@@ -14,15 +14,19 @@ import com.codename1.charts.views.PieChart;
 import com.codename1.components.FileEncodedImage;
 import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
 import static com.codename1.ui.Component.CENTER;
+import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
+import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
@@ -31,9 +35,11 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
+import com.mycompany.myapp.MyApplication;
 import entities.*;
 import java.util.ArrayList;
 import services.*;
+import utils.Session;
 
 /**
  * GUI builder created Form
@@ -43,7 +49,6 @@ import services.*;
 public class MembreGroupesInterface extends com.codename1.ui.Form {
     
     private Resources theme;
-    private int id_user_actif = 9;
     int groupes_ferme = 0 , groupes_ouvert = 0;
         
 
@@ -60,7 +65,9 @@ public class MembreGroupesInterface extends com.codename1.ui.Form {
         Container cnt1 = ui.createContainer(theme, "GUI 1");//ajouter graphiquement un GUI element
         tab.addTab("Mes groupes", cnt1);
         Container cnt2 = ui.createContainer(theme, "GUI 2");//ajouter graphiquement un GUI element
-        tab.addTab("Mes invitations", cnt2);
+        tab.addTab("Statistiques", cnt2);
+        Container cnt3 = ui.createContainer(theme, "GUI 3");//ajouter graphiquement un GUI element
+        tab.addTab("Mes invitations", cnt3);
         //creer un groupe 
         Button ajouterBtn = new Button("Créer un groupe");
         ajouterBtn.addActionListener(new ActionListener() {
@@ -77,49 +84,102 @@ public class MembreGroupesInterface extends com.codename1.ui.Form {
         
         
         //liste groupes
+        ArrayList<Groupe> groupes = new ArrayList<>();
+        Container cnt1_grs = ui.createContainer(theme, "GUI 1");
         cnt1.setLayout(BoxLayout.y());
+        TextField recherche = new TextField(null, "Chercher ici...");
+        recherche.addDataChangeListener((i1, i2) -> {
+            System.out.println(recherche.getText());
+            cnt1_grs.removeAll();
+            for(Groupe gi:groupes)
+                if(gi.getTitre().toUpperCase().contains(recherche.getText().toUpperCase())||
+                    gi.getDescription().toUpperCase().contains(recherche.getText().toUpperCase())||
+                    recherche.getText().equals(""))
+                        cnt1_grs.add(addItemGroupe(gi));
+            this.repaint();
+            this.refreshTheme();
+            
+        });
+        cnt1.add(recherche);
         for(GroupeMembre gmi : list_gm)
-            if(gmi.getId_membre()==id_user_actif)
+            if(gmi.getId_membre()==Session.id_Session)
                 if(gmi.getEtat().equals("membre") || gmi.getEtat().equals("administrateur"))
                     for(Groupe gi : list_g)
                         if(gi.getId()==gmi.getId_groupe())
                         {
                             if(gi.getAutorisation()==0)groupes_ferme++;
                             else groupes_ouvert++;
-                            cnt1.add(addItemGroupe(gi));
+                            cnt1_grs.add(addItemGroupe(gi));
+                            groupes.add(gi);
                         }
+        cnt1.add(cnt1_grs);
         
         //liste invitation
-        cnt2.setLayout(BoxLayout.y());
+        cnt3.setLayout(BoxLayout.y());
         for(GroupeMembre gmi : list_gm)
-            if(gmi.getId_membre()==id_user_actif)
+            if(gmi.getId_membre()==Session.id_Session)
                 if(gmi.getEtat().equals("invitation"))
                     for(Membre mi : list_m)
-                        if(mi.getUsrId()==gmi.getId_membre())
+                        if(mi.getUsrId()==gmi.getId_invite())
                             for(Groupe gi : list_g)
                                 if(gi.getId()==gmi.getId_groupe())
-                            cnt2.add(addItemMembre(mi,gi,gmi));
+                            cnt3.add(addItemMembre(mi,gi,gmi));
         
-        //notification
-        LocalNotification n = new LocalNotification();
-        n.setId("demo-notification");
-        n.setAlertBody("It's time to take a break and look at me");
-        n.setAlertTitle("Break Time!");
-        n.setAlertSound("/notification_sound_bells.mp3"); //file name must begin with notification_sound
-        Display.getInstance().scheduleLocalNotification(
-                n,
-                System.currentTimeMillis() + 10 * 1000, // fire date/time
-                LocalNotification.REPEAT_MINUTE  // Whether to repeat and what frequency
-        );
+        
         //pie chart
-        
-        double[] values = new double[]{groupes_ouvert, groupes_ouvert};
-        this.add(createPieChartForm(values));
+      
+        double[] values = new double[]{groupes_ouvert, groupes_ferme};
+        cnt2.add(createPieChartForm(values));
        
 
-        this.getToolbar().addCommandToLeftBar("retour", theme.getImage("back-command.png"), ev->{
+        /*this.getToolbar().addCommandToRightBar("retour", theme.getImage("back-command.png"), ev->{
                System.out.println("back");
-            });
+            });*/
+        String txt = "" ;
+        for(Membre mi : list_m)
+            if(Session.id_Session==mi.getUsrId())
+                txt = mi.getNom()+" "+mi.getPrenom();
+        //notification
+        showToast("Bienvenue aux groupes "+txt);
+        getToolbar().addCommandToSideMenu(" ",null,null);
+        getToolbar().addCommandToSideMenu("bienvenue "+txt,null,null);
+        this.getToolbar().addMaterialCommandToSideMenu("Mes Réclamations", FontImage.MATERIAL_19MP, e->{
+            new MembreReclamationAfficherInterface().show();  });
+
+
+           this.getToolbar().addMaterialCommandToSideMenu("Mon Forum", FontImage.MATERIAL_HOME, e->{
+            new PublicationInterface().show();
+            
+       });
+           
+           this.getToolbar().addMaterialCommandToSideMenu("Mes Groupes", FontImage.MATERIAL_EVENT, e->{
+            new MembreGroupesInterface().show();
+       });
+
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Evènements", FontImage.MATERIAL_EVENT, e->{
+            new EvenementAfficherInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Inbox", FontImage.MATERIAL_MESSAGE, e->{
+            new MessageInboxInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Mes Offres", FontImage.MATERIAL_PERSON, e->{
+            new OffreInterface().show();
+
+            
+       });
+         
+         this.getToolbar().addMaterialCommandToSideMenu("Statistiques", FontImage.MATERIAL_GRAPHIC_EQ, e->{
+            new StatistiqueInterface().show();
+
+            
+       });
+       
     }
 
     
@@ -218,21 +278,21 @@ protected CategorySeries buildCategoryDataset(String title, double[] values) {
 public ChartComponent createPieChartForm(double[] values) {
     
     // Set up the renderer
-    int[] colors = new int[]{ColorUtil.BLUE, ColorUtil.GREEN, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.CYAN};
+    int[] colors = new int[]{ColorUtil.rgb(254, 187, 57)/*BLUE*/, ColorUtil.rgb(57, 215, 254)/*GREEN*/, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.CYAN};
     DefaultRenderer renderer = buildCategoryRenderer(colors);
     /*renderer.setZoomButtonsVisible(true);
     renderer.setZoomEnabled(true);*/
-    renderer.setLabelsColor(ColorUtil.GRAY);
+    renderer.setLabelsColor(ColorUtil.BLACK);
     renderer.setChartTitleTextSize(100);
     renderer.setDisplayValues(true);
     renderer.setShowLabels(true);
     SimpleSeriesRenderer r = renderer.getSeriesRendererAt(0);
-    r.setGradientEnabled(true);
+    /*r.setGradientEnabled(true);
     r.setGradientStart(0, ColorUtil.BLUE);
-    r.setGradientStop(0, ColorUtil.GREEN);
+    r.setGradientStop(0, ColorUtil.GREEN);*/
     r.setHighlighted(true);
     // Create the chart ... pass the values and renderer to the chart object.
-    PieChart chart = new PieChart(buildCategoryDataset("Groupes overt(bleu),fermé(vert)", values), renderer);
+    PieChart chart = new PieChart(buildCategoryDataset("Groupes oUvert(bleu),fermé(vert)", values), renderer);
     // Wrap the chart in a Component so we can add it to a form
     ChartComponent c = new ChartComponent(chart);
     
@@ -240,7 +300,18 @@ public ChartComponent createPieChartForm(double[] values) {
 
 }
 
-////////////-- DON'T EDIT BELOW THIS LINE!!!
+//notification 
+private void showToast(String text) {
+        Image errorImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_ALARM, UIManager.getInstance().getComponentStyle("Title"), 4);
+        ToastBar.Status status = ToastBar.getInstance().createStatus();
+        status.setMessage(text);
+        status.showDelayed(LEFT);
+        status.setIcon(errorImage);
+        status.setExpires(2000);
+        status.show();
+    }
+
+//////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          

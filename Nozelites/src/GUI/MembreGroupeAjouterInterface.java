@@ -7,9 +7,13 @@ package GUI;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.components.OnOffSwitch;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
+import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.TextField;
@@ -20,6 +24,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
+import com.mycompany.myapp.MyApplication;
 import entities.Groupe;
 import entities.GroupeMembre;
 import entities.Membre;
@@ -27,6 +32,7 @@ import java.util.ArrayList;
 import services.ServiceGroupe;
 import services.ServiceGroupeMembre;
 import services.ServiceMembre;
+import utils.Session;
 
 
 /**
@@ -37,7 +43,6 @@ import services.ServiceMembre;
 public class MembreGroupeAjouterInterface extends com.codename1.ui.Form {
     
     private Resources theme;
-    private int id_user_actif = 9;
     private ArrayList<Membre> list_m = new ServiceMembre().Afficher();
 
     public MembreGroupeAjouterInterface() {
@@ -82,11 +87,13 @@ public class MembreGroupeAjouterInterface extends com.codename1.ui.Form {
                 sg.ajouter(new Groupe(0, titre.getText(), description.getText(), etatt));
                 //ajouter membre
                 ServiceGroupeMembre sgm = new ServiceGroupeMembre();
-                sgm.ajouter(new GroupeMembre(1, sg.lastid(), id_user_actif, -1, "administrateur"));
+                sgm.ajouter(new GroupeMembre(1, sg.lastid(), Session.id_Session, -1, "administrateur"));
                 for(Membre mi : list_m)
                     if(mi.getAge()==1)
-                        sgm.ajouter(new GroupeMembre(1, sg.lastid(),mi.getUsrId() , id_user_actif, "invitation"));
+                        sgm.ajouter(new GroupeMembre(1, sg.lastid(),mi.getUsrId() , Session.id_Session, "invitation"));
                 new MembreGroupesInterface().show();
+                //notification
+                showToast("le groupe est ajouté avec succé");
                 
             }
         });
@@ -95,11 +102,15 @@ public class MembreGroupeAjouterInterface extends com.codename1.ui.Form {
         
         //inviter membre 
         for(Membre mi : list_m)
-            if(mi.getUsrId()!=id_user_actif)
+            if(mi.getUsrId()!=Session.id_Session)
                 cnt2.add(addItemMembre(mi));
         
         //retour btn
-        this.getToolbar().addCommandToLeftBar("Retour", null, (evt) -> {
+        this.getToolbar().addCommandToRightBar("Retour", null, (evt) -> {
+            new MembreGroupesInterface().show();
+        });
+        
+        getToolbar().addCommandToSideMenu("Mes groupes", null, e->{
             new MembreGroupesInterface().show();
         });
         
@@ -114,7 +125,7 @@ public class MembreGroupeAjouterInterface extends com.codename1.ui.Form {
         Container cn1=new Container(new BorderLayout());
         Container cn2=new Container(BoxLayout.y());
         Label lab=new Label(m.getNom()+" "+m.getPrenom());
-        Label lab2=new Label(""+m.getMdp());
+        Label lab2=new Label(""+m.getMail());
         
         m.setAge(0);
         OnOffSwitch genre = new OnOffSwitch();//switch
@@ -138,9 +149,18 @@ public class MembreGroupeAjouterInterface extends com.codename1.ui.Form {
         return cn1;
                 
     }
+    //notification 
+private void showToast(String text) {
+        Image errorImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_ALARM, UIManager.getInstance().getComponentStyle("Title"), 4);
+        ToastBar.Status status = ToastBar.getInstance().createStatus();
+        status.setMessage(text);
+        status.showDelayed(LEFT);
+        status.setIcon(errorImage);
+        status.setExpires(2000);
+        status.show();
+    }
 
-
-////////////-- DON'T EDIT BELOW THIS LINE!!!
+////-- DON'T EDIT BELOW THIS LINE!!!
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
